@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy as sp
+%matplotlib inline
+
+
+t_students = 100
+pa_all = 80
+fa_one = 10
+fa_two = 7
+fa_three=3
+n_students_not_pa_all = t_students - pa_all 
+prob_fa_none = pa_all/t_students
+prob_fa_in_one = fa_one/t_students
+prob_fa_in_two = fa_two/t_students
+prob_fa_in_three = fa_three/t_students
+
+print("probability failed in none subjects" , prob_fa_none)
+print("probability failed in one subject", prob_fa_in_one)
+print("probability failed in two subjects", prob_fa_in_two)
+print("prbobabilty faled in two subjects",prob_fa_in_three)
+
+x=[prob_fa_none,prob_fa_in_one,prob_fa_in_two,prob_fa_in_three]
+counts, bin_edges = np.histogram (x, bins=10 , density = True )
+pdf = counts/(sum(counts))
+cdf = np.cumsum(pdf)
+plt.figure(figsize=(12,8))
+plt.subplot(1,2,1)
+plt.plot(bin_edges[1:],pdf , label = "PDF")
+plt.plot(bin_edges[1:],cdf,label = "CDF")
+plt.legend()
+plt.tight_layout()
+plt.title("PDF OF students w.r.t subjects passed")

@@ -1,0 +1,35 @@
+#Problem Statement 1:
+#You survey households in your area to find the average rent they are paying. Find the
+#standard deviation from the following data:
+#$1550, $1700, $900, $850, $1000, $950.
+
+
+from math import sqrt
+ar = [1550,1700, 900, 850, 1000, 950]
+
+def find_mean(ar):
+    return sum(ar)/len(ar)
+
+def find_variance(ar):
+    variance = 0.0 
+    mean = find_mean(ar)
+    variance = sum((x-mean)**2 for x in ar) / (len(ar)-1)
+    return variance 
+
+def find_std_dev(ar):
+      
+    dev = float(find_variance(ar)**0.5)
+    return dev
+
+
+print("Mean = " + str(find_mean(ar)))
+print("variance = " + str(find_variance(ar)))
+print("Standard Deviation =" + str(find_std_dev(ar)))
+
+
+#using inbuilt python package
+import statistics as stat
+ar = [1550,1700, 900, 850, 1000, 950]
+print("Mean = " + str(stat.mean(ar)))
+print("variance = " + str(stat.variance(ar)))
+print("Standard Deviation =" + str(stat.stdev(ar)))

@@ -1,0 +1,23 @@
+#Problem Statement 2:
+#Find the variance for the following set of data representing trees in California (heights in
+#feet):
+#3, 21, 98, 203, 17, 9
+
+from math  import sqrt
+ar1 = [3, 21, 98, 203, 17, 9]
+def find_mean(ar):
+    return sum(ar)/len(ar)
+
+def find_variance(ar):
+    variance = 0.0 
+    mean = find_mean(ar1)
+    variance = sum((x-mean)**2 for x in ar1) / (len(ar1)-1)
+    return variance 
+print("Variance =" +  str(find_variance(ar1)))
+
+
+
+#by using in built python package
+ar1 = [3, 21, 98, 203, 17, 9]
+import statistics as stat
+print("variance ="+ str(stat.variance(ar1)))
